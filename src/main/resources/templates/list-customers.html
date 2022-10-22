@@ -33,9 +33,8 @@
             <!--loop over and print our customers -->
             <tr th:each="tempCustomer : ${customers}">
                 <!--                 construct an "update" link with customer id -->
-                <th:block
-                        th:with="updateLink=@{~/customer/showFormForUpdate(customerId=${tempCustomer.id})}"></th:block>
-                <th:block th:with="deleteLink=@{~/customer/delete(customerId=${tempCustomer.id})}"></th:block>
+<!--                <th:block th:with="updateLink=@{~/customer/showFormForUpdate(customerId=${tempCustomer.id})}"></th:block>-->
+<!--                <th:block th:with="deleteLink=@{~/customer/delete(customerId=${tempCustomer.id})}"></th:block>-->
 
                 <td th:text="${tempCustomer.firstName}"></td>
                 <td th:text="${tempCustomer.lastName}"></td>

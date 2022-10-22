@@ -16,7 +16,7 @@
 <div id="container">
     <h3>Save Customer</h3>
 </div>
-<form th:action="@{/saveCustomer}" method="post" th:object="${customer}">
+<form th:action="saveCustomer" action="#" method="post" th:object="${customer}">
     <input type="hidden" th:field="*{id}" id="id"/>
     <table>
         <tbody>
@@ -34,7 +34,7 @@
         </tr>
         <tr>
             <td><label></label></td>
-            <td><input type="submit" value="Save" class="save"/></td>
+            <td><input type="submit" th:type="submit" value="Save" class="save"/></td>
         </tr>
         </tbody>
     </table>
