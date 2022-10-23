@@ -1,4 +1,4 @@
-# :pushpin: CRM
+# :pushpin: Customer-relationship-tracker (CRM)
 > 회원 개인 정보 관리 페이지
 
 </br>
@@ -12,18 +12,19 @@
 ## 2. 사용 기술
 #### `Back-end`
   - Java 11
-  - Spring BooT
+  - Spring Boot
   - Gradle
   - Spring Data JPA
   - MySQL
   - Spring Security
+  - Thymeleaf
 #### `Front-end`
   - udemy 학습시 사용한 템플릿 수정
 
 </br>
 
 ## 3. ERD 설계
-<!--  -->
+데이터베이스 설계 학습이 부족하여 단일 테이블로만 구성됨.
 
 
 ## 4. 핵심 기능
