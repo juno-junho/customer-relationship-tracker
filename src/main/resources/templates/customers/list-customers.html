@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en" 
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link type="text/css"
+		  rel="stylesheet" th:href="@{/css/style.css}"/>
+	<title>회원 개인정보 관리</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>회원 개인 정보</h3>
+	<hr>
+	
+	<div>
+		유저 : <span sec:authentication="name"></span>
+		<br>
+		직급 : <span sec:authentication="principal.authorities"></span>
+		<br><br>
+
+		<div th:if="${theDate != null}">
+
+			<p th:text="'현재 서버시간은 ' + ${theDate} + ' 입니다.'" class="funny" />
+		</div>
+	</div>
+	
+    <form th:action="@{/customers/search}" class="form-inline">
+		<a th:href="@{/customers/showFormForAdd}"
+			class="btn btn-primary btn-sm mr-5 mb-3">
+			회원 추가
+		</a>
+
+		<input class="form-control  ml-5 mr-sm-2 mb-3" type="search" name="customerName" placeholder="이름으로 검색하기" />
+
+		<button class="btn btn-success mb-3" type="submit">검색</button>
+    </form>	
+	
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th style="text-align: center;">First Name</th>
+				<th style="text-align: center;">Last Name</th>
+				<th style="text-align: center;">Email</th>
+
+				<div sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
+					<th style="text-align: center;">Action</th>
+				</div>					
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempCustomer : ${customers}">
+			
+				<td style="text-align: center;" th:text="${tempCustomer.firstName}" />
+				<td style="text-align: center;" th:text="${tempCustomer.lastName}" />
+				<td style="text-align: center;" th:text="${tempCustomer.email}" />
+
+				<div style="text-align: center;" sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
+				
+					<td style="text-align: center;" >
+						<span style="text-align: center;" sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')" >
+	
+							<!-- Add "update" button/link -->
+							<a style="text-align: center;" th:href="@{/customers/showFormForUpdate(customerId=${tempCustomer.id})}"
+							   class="btn btn-info btn-sm">
+								수정
+							</a>
+	
+						</span>
+					
+						<span style="text-align: center;" sec:authorize="hasRole('ROLE_ADMIN')">
+						
+							<!-- Add "delete" button/link -->					
+							<a style="text-align: center;" th:href="@{/customers/delete(customerId=${tempCustomer.id})}"
+							   class="btn btn-danger btn-sm"
+							   onclick="if (!(confirm('이 회원을 항목에서 정말 삭제 하시겠습니까?'))) return false">
+								삭제
+							</a>
+	
+						</span>
+					</td>
+
+				</div>				
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+	<!-- Add a logout button -->
+	<form action="#" th:action="@{/logout}" 
+			   method="POST">
+	
+		<input type="submit" value="로그아웃" class="btn btn-outline-primary mt-2" />
+	
+	</form>
+	
+</div>
+	
+</body>
+</html>
+
+
+
