@@ -1,4 +1,4 @@
-# :pushpin: CRM
+# :pushpin: Customer-relationship-tracker (CRM)
 > 회원 개인 정보 관리 페이지
 
 </br>
@@ -14,17 +14,17 @@
   - Java 11, Spring Boot 2.7.5, Gradle, Spring Data JPA, Spring Security,
     MySQL, Thymeleaf, Lombok, Devtools
 
+
 #### `Front-end`
   - udemy 학습시 예제로 사용했던 템플릿 수정.
 
 </br>
 
 ## 3. ERD 설계
-![img.png](img.png)
+![img.png](image/img.png)
 
 데이터베이스 설계 지식이 부족하여 복잡하지 않은 두 테이블로 만들 수 있는 것이 어떤것이 있을까 생각하다
 회원 개인 정보 관리 페이지를 만들기로 했습니다.
-
 
 ## 4. 핵심 기능
 이 서비스의 핵심 기능은 회원을 등록하고, 권한에 따라 회원의 정보를 삭제하고 변경할 수 있는것 입니다.
@@ -36,16 +36,16 @@
  - 아래 4.3 캡쳐한 목록을 보시면 리스트가 Last Name을 기준으로 오름차순 정렬되어 있습니다.
 ### 4.2. Spring AOP를 통한 로그 기록
  - 학습한 Spring AOP를 적용시켜 보고자 하였고 다음과 같이 메소드 호출 전 후로 로그를 남기는 기능을 구현 하였습니다. 
-![img_4.png](img_4.png)
+![img_4.png](image/img_4.png)
 ### 4.3 회원 개인 정보 수정과 삭제 기능에 대하여 권한 부여
-- user1로 로그인 시 ![img_1.png](img_1.png)
+- user1로 로그인 시 ![img_1.png](image/img_1.png)
 - user2로 로그인 시
-![img_2.png](img_2.png)
+![img_2.png](image/img_2.png)
 - user3로 로그인 시
-![img_3.png](img_3.png)
+![img_3.png](image/img_3.png)
 위에서 확인 할 수 있듯, 각 기능의 권한 범위를 Spring Security를 통해 부여하는 기능을 구현해 보았습니다.
 ### 4.4 회원 추가, 삭제, 수정하는 기본적인 CRUD
-![img_5.png](img_5.png)
+![img_5.png](image/img_5.png)
 - Spring Data JPA를 통해 회원 저장을 하면 DB에 추가되며 회원 개인 정보 변경과 삭제도 가능합니다.
 
 ### 4.5 로그인과 로그아웃 기능
