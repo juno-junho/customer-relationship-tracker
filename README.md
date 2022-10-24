@@ -53,6 +53,50 @@
 ### 5.2. @RequiredArgsConstructor 사용시 주의할 점
  - 이번 프로젝트는 두 개의 데이터베이스를 이용하기에 서로다른 datasource를 지정해 주어야 했습니다.
    DemoSecurityConfig 클래스에서 @Qualifier를 통해 Spring Security에 해당하는 datasource를 지정해주는데, 이때 @RequiredArgsConstructor를 통해 의존성 주입이 안되는 것을 확인하였습니다.
+
+<details>
+<summary><b>기존코드 코드</b></summary>
+<div markdown="1">
+
+``` java
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class DemoSecurityConfig {
+    @Qualifier("securityDataSource")
+    private final DataSource securityDataSource;
+}
+```
+</div>
+</details>
+
+<details>
+<summary><b>개선한 코드</b></summary>
+<div markdown="1">
+
+``` java
+
+@Configuration
+@EnableWebSecurity
+public class DemoSecurityConfig {
+
+    private DataSource securityDataSource;
+
+    public DemoSecurityConfig(@Qualifier("securityDataSource") DataSource securityDataSource) {
+        this.securityDataSource = securityDataSource;
+    }
+}
+```
+``` java
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class DemoSecurityConfig {
+    @Qualifier("securityDataSource") @NonNull private final DataSource securityDataSource;
+}
+```
+</div>
+</details>   
  
 ## 6. 나아가야할 방향
  
