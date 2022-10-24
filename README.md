@@ -1,24 +1,17 @@
 # :pushpin: Customer-relationship-tracker (CRM)
 > 회원 개인 정보 관리 페이지
 
-</br>
-
 ## 1. 제작 기간 & 참여 인원
 - 2022년 10월
 - 개인 프로젝트 (유데미를 스프링 강의 학습의 연장선)
-
-</br>
 
 ## 2. 사용 기술
 #### `Back-end`
   - Java 11, Spring Boot 2.7.5, Gradle, Spring Data JPA, Spring Security,
     MySQL, Thymeleaf, Lombok, Devtools
 
-
 #### `Front-end`
   - udemy 학습시 예제로 사용했던 템플릿 수정.
-
-</br>
 
 ## 3. ERD 설계
 ![img.png](image/img.png)
@@ -52,7 +45,6 @@
 - 회원 개인 정보 접근 시 권한 확인을 위해 로그인 기능과 로그아웃 기능을 Spring Security를 통해 구현하였습니다.
 </div>
 </details>
-</br>
 
 ## 5. 트러블 슈팅
 ### 5.1. WebSecurityConfigurerAdapter 문제
@@ -61,9 +53,7 @@
 ### 5.2. @RequiredArgsConstructor 사용시 주의할 점
  - 이번 프로젝트는 두 개의 데이터베이스를 이용하기에 서로다른 datasource를 지정해 주어야 했습니다.
    DemoSecurityConfig 클래스에서 @Qualifier를 통해 Spring Security에 해당하는 datasource를 지정해주는데, 이때 @RequiredArgsConstructor를 통해 의존성 주입이 안되는 것을 확인하였습니다.
-   
-</br>
-
+ 
 ## 6. 나아가야할 방향
  
 > 트러블 슈팅 경험을 통해 롬복의 작동원리에 대해 학습해 제대로 알고 써야 겠다는 생각이 들었습니다.  
