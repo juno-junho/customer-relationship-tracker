@@ -59,7 +59,6 @@ class CustomerDAOImplTest {
 
         // delete
         customerDAO.deleteById(1);
-
         assertNull(customerDAO.findById(1).get(), "해당 값이 삭제되지 않았습니다.");
     }
 }
