@@ -21,6 +21,9 @@
 
 ## 4. 핵심 기능
 이 서비스의 핵심 기능은 회원을 등록하고, 권한에 따라 회원의 정보를 삭제하고 변경할 수 있는것 입니다.
+<br>
+- id: user1, user2, user 3
+- password: fun123
 <details>
 <summary><b>핵심 기능 설명 펼치기</b></summary>
 <div markdown="1">
